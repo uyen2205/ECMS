@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert to camelCase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="inputText">Input:</label>
+        <input type="text" id="inputText" placeholder="Enter a string">
+        <button onclick="convertToCamelCase()">Convert</button>
+    </div>
+    
+    <div>
+        <label for="outputText">Output:</label>
+        <span id="outputText"></span>
+    </div>
+
+    <script>
+        function convertToCamelCase() {
+            var inputText = document.getElementById('inputText').value;
+            var outputText = document.getElementById('outputText');
+
+            // Xóa khoảng trắng và ký tự đặc biệt, chuyển sang camelCase
+            var camelCaseString = inputText.replace(/[^\w\s]/gi, '').split(' ').map(function(word, index) {
+                return index === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            }).join('');
+
+            outputText.textContent = camelCaseString;
+        }
+    </script>
+</body>
+</html>
